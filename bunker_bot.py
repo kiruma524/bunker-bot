@@ -360,6 +360,11 @@ def start(message):
     user_state.setdefault(message.chat.id, {})
     bot.send_message(message.chat.id, "👋 Добро пожаловать в генератор карточек для «Бункера»!\nНажмите /card, чтобы получить персонажа 🎲")
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    user_state.setdefault(message.chat.id, {})
+    bot.send_message(message.chat.id, "👋 Добро пожаловать в генератор карточек для «Бункера»!\nНажмите /card, чтобы получить персонажа 🎲 \nДля генерации убежища и катастрофы, пройдите по <a href='https://randomall.ru/custom/gen/1422'>ссылке</a>", parse_mode='HTML' )
+
 @bot.message_handler(commands=['card'])
 def handle_card(message):
     uid = message.chat.id
